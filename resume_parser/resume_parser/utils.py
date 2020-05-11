@@ -7,7 +7,7 @@ import nltk
 import spacy
 import pandas as pd
 import docx2txt
-from . import constants as cs
+import constants as cs
 from spacy.matcher import Matcher
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter

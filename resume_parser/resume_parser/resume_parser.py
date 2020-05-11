@@ -1,7 +1,7 @@
 # Author: Omkar Pathak
 
 import os
-from . import utils
+import utils
 import spacy
 import pprint
 from spacy.matcher import Matcher
@@ -16,7 +16,7 @@ class ResumeParser(object):
             'email'             : None,
             'mobile_number'     : None,
             'skills'            : None,
-            'education'         : None,
+           # 'education'         : None,
             'experience'        : None,
             'competencies'      : None,
             'measurable_results': None
@@ -36,7 +36,7 @@ class ResumeParser(object):
         email      = utils.extract_email(self.__text)
         mobile     = utils.extract_mobile_number(self.__text)
         skills     = utils.extract_skills(self.__nlp, self.__noun_chunks)
-        edu        = utils.extract_education([sent.string.strip() for sent in self.__nlp.sents])
+        #edu        = utils.extract_education([sent.string.strip() for sent in self.__nlp.sents])
         experience = utils.extract_experience(self.__text)
         entities   = utils.extract_entity_sections(self.__text_raw)
         self.__details['name'] = name
@@ -44,7 +44,7 @@ class ResumeParser(object):
         self.__details['mobile_number'] = mobile
         self.__details['skills'] = skills
         # self.__details['education'] = entities['education']
-        self.__details['education'] = edu
+        #self.__details['education'] = edu
         self.__details['experience'] = experience
         try:
             self.__details['competencies'] = utils.extract_competencies(self.__text_raw, entities['experience'])
